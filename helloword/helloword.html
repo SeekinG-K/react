@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>hello_react</title>
+    <style>
+        .title {
+            background-color: antiquewhite;
+        }
+    </style>
 </head>
 <body>
 <div>
@@ -16,9 +21,14 @@
     <script type="text/javascript" src="js/babek.main.js"></script>
 
     <script type="text/babel">
-
+        const myId = '111';
+        const myName = 'Alex';
         //1.创建虚拟dom就像Java中的类
-        const VDOM = <h1>Hello React1</h1>
+        const VDOM = (
+            <h1 className="title">{myName} say: Hello React
+                <span>myId is : {myId}</span>
+            </h1>
+        )
         //2.渲染模拟DOM到页面 其实就行创建了一个dom对象，用该虚拟对象进行操作
         ReactDOM.render(VDOM, document.getElementById('test'))
     </script>
