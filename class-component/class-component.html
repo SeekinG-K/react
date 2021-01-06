@@ -14,13 +14,29 @@
     <script type="text/javascript" src="../helloword/js/react-dom.development.js"></script>
     <!--    引入babal用于将jsx转换成js-->
     <script type="text/javascript" src="../helloword/js/babek.main.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
     <script type="text/babel">
         class Person extends React.Component {
             state = {isHot: '很热', isWind: '大风', isLine: false}
+            static propTypes = {
+                name: PropTypes.string.isRequired
+            }
+            static defaultProps = {
+                name:"Tom"
+            }
 
             render() {
                 const isLine = this.state.isLine;
-                return <p id="p1" onClick={this.weatherChanged}>我是类中render方法 {isLine ? '炎热' : '凉爽'}</p>;
+                return (
+                    <div>
+                        <p id="p1" onClick={this.weatherChanged}>我是类中render方法 {isLine ? '炎热' : '凉爽'}</p>
+                        <ul>
+                            <li>{this.props.name}</li>
+                            <li>{this.props.age}</li>
+                        </ul>
+                    </div>
+                );
+
             }
 
             //箭头函数 没有自己的this，使用外层的this
@@ -32,7 +48,9 @@
             }
         }
 
-        ReactDOM.render(<Person name="alex"/>, document.getElementById('test'))
+        ReactDOM.render(<Person age={18}/>,
+            document.getElementById('test')
+        )
     </script>
 </div>
 
