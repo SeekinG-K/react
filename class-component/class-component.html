@@ -22,13 +22,25 @@
                 name: PropTypes.string.isRequired
             }
             static defaultProps = {
-                name:"Tom"
+                name: "Tom"
+            }
+
+            button = () => {
+                const {i1} = this.refs;
+
+                alert(`你点击了这个按钮偶 拿到了i1的值${i1.value}`)
             }
 
             render() {
                 const isLine = this.state.isLine;
                 return (
                     <div>
+                        <label>
+                            <input ref="i1" type="text" placeholder="请输入你的名字"/>
+                            <br/>
+                            <button onClick={this.button}>这是按钮</button>
+                        </label>
+
                         <p id="p1" onClick={this.weatherChanged}>我是类中render方法 {isLine ? '炎热' : '凉爽'}</p>
                         <ul>
                             <li>{this.props.name}</li>
