@@ -15,21 +15,40 @@
     <!--    引入babal用于将jsx转换成js-->
     <script type="text/javascript" src="../helloword/js/babek.main.js"></script>
     <script type="text/babel">
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
 
-        function hello() {
-            return <h1>我是函数式组件</h1>
+            speak() {
+                console.log("我是Person对象的speak方法");
+                console.log(`我叫${this.name}, 年龄是${this.age}`)
+            }
+
         }
 
-        function Hello1() {
-            return <h1>我是函数式组件</h1>
+        class Student extends Person {
+            constructor(name, age, sex) {
+                super(name, age);
+                this.sex = sex;
+            }
+
+            speak() {
+                super.speak();
+                console.log(`我的性别${this.sex}`)
+            }
         }
 
-        // ReactDOM.render(hello(), document.getElementById('test'))
-        ReactDOM.render(<Hello1/>, document.getElementById('test'))
-        /**
-         * 1.解析<Hello1/>组件所对应的函数
-         * 2.找到该函数并把虚拟dom生成真实dom
-         */
+        const p1 = new Person("Alex", 12);
+        const p2 = new Person("Tom", 18);
+        const s1 = new Student("Toney", 20, "man");
+        console.log(p1);
+        console.log(p2);
+        console.log(s1);
+        // p1.speak();
+        s1.speak()
+
     </script>
 </div>
 
