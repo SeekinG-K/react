@@ -16,6 +16,8 @@
     <script type="text/javascript" src="../helloword/js/babek.main.js"></script>
     <script type="text/babel">
         class Person extends React.Component {
+
+            //构造器只调用一次
             constructor(props) {
                 super(props);
 
@@ -26,14 +28,18 @@
                 this.demo = this.weatherChanged.bind(this);
             }
 
+            //调用1+n次
             render() {
-                const isLine = this.state;
+                const isLine = this.state.isLine;
                 return <p id="p1" onClick={this.demo}>我是类中render方法 {isLine ? '炎热' : '凉爽'}</p>;
             }
 
             weatherChanged() {
                 // this.state.isLine.call(true);
-                this.state.isLine = !this.state.isLine;
+                //state状态不可直接更改
+                const line = this.state.isLine;
+                //更改state的状态时，必须使用setState
+                this.setState({isLine: !line})
                 console.log(this.state.isLine);
                 console.log('p1被点击了');
             }
