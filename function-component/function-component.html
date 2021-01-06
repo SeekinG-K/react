@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+<div>
+    <!--容器-->
+    <div id="test"></div>
+    <!--    react核心库-->
+    <script type="text/javascript" src="../helloword/js/react.development.js"></script>
+    <!--    引入react-dom用于支持react操作dom-->
+    <script type="text/javascript" src="../helloword/js/react-dom.development.js"></script>
+    <!--    引入babal用于将jsx转换成js-->
+    <script type="text/javascript" src="../helloword/js/babek.main.js"></script>
+    <script type="text/babel">
+
+        function hello() {
+            return <h1>我是函数式组件</h1>
+        }
+
+        function Hello1() {
+            return <h1>我是函数式组件</h1>
+        }
+
+        // ReactDOM.render(hello(), document.getElementById('test'))
+        ReactDOM.render(<Hello1/>, document.getElementById('test'))
+        /**
+         * 1.解析<Hello1/>组件所对应的函数
+         * 2.找到该函数并把虚拟dom生成真实dom
+         */
+    </script>
+</div>
+
+</body>
+</html>
