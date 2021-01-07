@@ -40,7 +40,9 @@
                     this.setState({[dataType]: event.target.value})
                     console.log(event.target.value);
                 };
-
+            }
+            saveFormData1 = (dataType, event) => {
+                this.setState({[dataType]: event.target.value})
             }
 
             render() {
@@ -50,6 +52,17 @@
                             <label>
                                 用户名：<input onChange={this.saveFormData('userName')} type="text" name="userName"/>
                                 密码：<input onChange={this.saveFormData('passWord')} type="text" name="passWord"/>
+                                性别：<input onChange={this.inputSex} type="text" name="passWord"/>
+                                <button>登录</button>
+                            </label>
+                        </form>
+
+                        <form>
+                            <label>
+                                用户名：<input onChange={event => this.saveFormData1('userName', event)} type="text"
+                                           name="userName"/>
+                                密码：<input onChange={event => this.saveFormData1('passWord', event)} type="text"
+                                          name="passWord"/>
                                 性别：<input onChange={this.inputSex} type="text" name="passWord"/>
                                 <button>登录</button>
                             </label>
