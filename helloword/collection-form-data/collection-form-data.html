@@ -18,19 +18,39 @@
     <script type="text/babel">
         class Login extends React.Component {
 
+            //初始化变量
+            state = {
+                userName: '',
+                passWord: '',
+                sex: ''
+            }
             submitForm = (event) => {
                 const {userName, passWord} = this;
                 event.preventDefault(); //阻止表单提交
                 alert(`你提交了表单: userName:${userName.value} passWord ${passWord.value}`);
             }
 
+            inputSex = (event) => {
+                this.setState({sex: event.target.value})
+                console.log(event.target.value);
+            }
+
+            saveFormData = (dataType) => {
+                return (event) => {
+                    this.setState({[dataType]: event.target.value})
+                    console.log(event.target.value);
+                };
+
+            }
+
             render() {
                 return (
                     <div>
-                        <form onSubmit={this.submitForm}>
+                        <form>
                             <label>
-                                用户名：<input ref={c => this.userName = c} type="text" name="userName"/>
-                                密码：<input ref={c => this.passWord = c} type="" name="passWord"/>
+                                用户名：<input onChange={this.saveFormData('userName')} type="text" name="userName"/>
+                                密码：<input onChange={this.saveFormData('passWord')} type="text" name="passWord"/>
+                                性别：<input onChange={this.inputSex} type="text" name="passWord"/>
                                 <button>登录</button>
                             </label>
                         </form>
