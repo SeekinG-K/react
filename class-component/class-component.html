@@ -48,6 +48,13 @@
                 alert(`你点击了这个按钮偶 拿到了i1的值${input2.value}`)
             }
 
+            //React生成一个ref容器，存储每个ref的节点
+            myRef = React.createRef();
+            //ref第三种实现
+            button3 = () => {
+                alert(`你点击了这个按钮偶 拿到了i1的值${this.myRef.current.value}`)
+            }
+
             saveInput = (c) => {
                 this.input2 = c;
             }
@@ -79,6 +86,13 @@
                             <input ref={this.saveInput} type="text" placeholder="请输入你的名字"/>
                             <br/>
                             <button onClick={this.button2}>这是按钮</button>
+                        </label>
+
+                        <br/>
+                        <label>
+                            <input ref={this.myRef} type="text" placeholder="请输入你的名字"/>
+                            <br/>
+                            <button onClick={this.button3}>这是按钮</button>
                         </label>
                     </div>
                 );
