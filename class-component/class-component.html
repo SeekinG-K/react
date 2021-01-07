@@ -25,10 +25,31 @@
                 name: "Tom"
             }
 
+            //ref第一种实现
             button = () => {
                 const {i1} = this.refs;
 
                 alert(`你点击了这个按钮偶 拿到了i1的值${i1.value}`)
+            }
+
+            //ref第二种实现  <!--使用了匿名函数把匿名实例对象
+            // react拿到ref当前所在的节点<input> 放到 形参c传到函数体中，赋值给 this.input1
+            //
+            button1 = () => {
+                const {input1} = this;
+
+                alert(`你点击了这个按钮偶 拿到了i1的值${input1.value}`)
+            }
+
+            //ref第三种实现
+            button2 = () => {
+                const {input2} = this;
+
+                alert(`你点击了这个按钮偶 拿到了i1的值${input2.value}`)
+            }
+
+            saveInput = (c) => {
+                this.input2 = c;
             }
 
             render() {
@@ -46,6 +67,19 @@
                             <li>{this.props.name}</li>
                             <li>{this.props.age}</li>
                         </ul>
+
+                        <label>
+                            <input ref={c => this.input1 = c} type="text" placeholder="请输入你的名字"/>
+                            <br/>
+                            <button onClick={this.button1}>这是按钮</button>
+                        </label>
+
+                        <br/>
+                        <label>
+                            <input ref={this.saveInput} type="text" placeholder="请输入你的名字"/>
+                            <br/>
+                            <button onClick={this.button2}>这是按钮</button>
+                        </label>
                     </div>
                 );
 
